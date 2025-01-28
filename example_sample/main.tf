@@ -12,24 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Lint
-on: [pull_request]
-
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      # - name: Install Linter
-      #   run:
-
-      # - name: Run Linter
-      #   run:

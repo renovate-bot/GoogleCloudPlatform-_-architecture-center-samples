@@ -10,19 +10,19 @@ which comes pre-configured with Terraform and automatic authentication.
 
 To run a sample:
 
- * Clone this repo:
+ 1. Clone this repo:
 
- ```bash
- git clone https://github.com/GoogleCloudPlatform/architecture-center-samples
- ```
+    ```bash
+    git clone https://github.com/GoogleCloudPlatform/architecture-center-samples
+    ```
 
- * Go to the sample directory
+ 1. Go to the sample directory
 
- ```
- cd architecture-center-samples/[SAMPLE]/
- ```
+    ```
+    cd architecture-center-samples/[SAMPLE]/
+    ```
 
- * [Review and apply the Terraform configuration](https://cloud.google.com/docs/terraform/basic-commands#apply-the-changes)
+ 1. [Review and apply the Terraform configuration](https://cloud.google.com/docs/terraform/basic-commands#apply-the-changes)
 
 ## Contributing
 
