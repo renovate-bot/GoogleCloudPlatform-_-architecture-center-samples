@@ -12,24 +12,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Lint
-on: [pull_request]
+name: Terraform
+on:
+  pull_request:
+      branches: [ main ]
+      paths:
+        - "**/*.tf"
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Terraform Lint
+        run: |
+          terraform fmt -check -diff -recursive
 
-      # - name: Install Linter
-      #   run:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${github.path}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Terraform Validate
+        run: |
+          terraform init
+          terraform validate
 
-      # - name: Run Linter
-      #   run:
