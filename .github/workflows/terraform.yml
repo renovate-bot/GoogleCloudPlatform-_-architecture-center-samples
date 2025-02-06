@@ -32,15 +32,21 @@ jobs:
 
   validate:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ${github.path}
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
+
       - name: Terraform Validate
         run: |
-          terraform init
-          terraform validate
+          CHANGES=$(git --no-pager diff --name-only HEAD $(git merge-base HEAD main) \
+              | grep "/" | cut -d/ -f1 | sort | uniq)
+
+          for folder in $CHANGES
+          do
+            echo "Validating $folder"
+            cd $folder
+            terraform init
+            terraform validate
+            cd -
+          done
 

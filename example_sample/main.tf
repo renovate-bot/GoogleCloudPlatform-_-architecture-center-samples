@@ -12,3 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+resource "random_id" "default" {
+  byte_length = 2
+}
+
+resource "google_storage_bucket" "default" {
+  name     = "example-${var.project_id}-${random_id.default.hex}"
+  location = "US"
+}

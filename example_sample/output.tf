@@ -13,5 +13,5 @@
 # limitations under the License.
 
 output "result" {
-    value = "TODO(glasnt)"
+  value = "Your bucket is available at ${google_storage_bucket.default.url}"
 }
