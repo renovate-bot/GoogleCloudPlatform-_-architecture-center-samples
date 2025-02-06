@@ -41,7 +41,7 @@ jobs:
           CHANGES=$(git --no-pager diff --name-only HEAD $(git merge-base HEAD main) \
               | grep "/" | cut -d/ -f1 | sort | uniq)
 
-          for folder in $(echo $CHANGES)
+          for folder in $CHANGES
           do
             echo "Validating $folder"
             cd $folder
