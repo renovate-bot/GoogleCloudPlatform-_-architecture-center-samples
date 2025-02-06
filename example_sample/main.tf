@@ -18,6 +18,6 @@ resource "random_id" "default" {
 }
 
 resource "google_storage_bucket" "default" {
-  name = "example-${var.project_id}-${random_id.default.hex}"
+  name     = "example-${var.project_id}-${random_id.default.hex}"
   location = "US"
 }
